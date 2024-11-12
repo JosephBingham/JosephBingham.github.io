@@ -136,3 +136,10 @@ ul.main-menu li a.active {
 .show {
   display:block;
 }
+
+.bg {
+  width: 100%;
+  z-index: 0;
+  
+}
+
