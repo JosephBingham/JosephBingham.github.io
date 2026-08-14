@@ -58,7 +58,7 @@
         <li><a href="#about">about</a></li>
         <li><a href="#contact">contact</a></li>
         <li><a href="#teaching">teaching</a></li>
-        <li><a href="#publications">publications</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#CV">CV</a></li>
       </ul>                 
     </header>
@@ -120,7 +120,7 @@
 
         <div id="CV" class="content-region hide">
             <h2>CV</h2>
-            <embed src="CV__Bingham.pdf" type="application/pdf" width="100%" height="600px" />
+            <embed src="CV_Bingham (1).pdf" type="application/pdf" width="100%" height="600px" />
           </div>
 
          <div id="publications" class="content-region hide">
@@ -202,9 +202,8 @@
                 #pubs-app .pub-empty{display:none;padding:40px 0;text-align:center;color:var(--ink-soft);font-family:"IBM Plex Mono",monospace;}
               </style>
 
-              <!--
-              <p class="pubs-lede">Thirteen papers across four research threads &mdash; efficient and biologically inspired model compression, machine learning for genomics and single cells, hidden bias in unsupervised representations, and aligning language with visual perception. Filter by thread, or browse the whole record.</p>
-              -->
+              <p class="pubs-lede">Fifteen papers across four research threads &mdash; efficient and biologically inspired model compression, machine learning for genomics and single cells, hidden bias in unsupervised representations, and aligning language with visual perception. Filter by thread, or browse the whole record.</p>
+
               <div class="pubs-controls" id="pub-filters" role="group" aria-label="Filter by research thread">
                 <button class="pub-chip" data-thread="all" aria-pressed="true">All <span class="n" id="pubn-all"></span></button>
                 <button class="pub-chip" data-thread="eff" aria-pressed="false"><span class="dot"></span>Efficiency &amp; compression <span class="n" id="pubn-eff"></span></button>
@@ -226,6 +225,8 @@
                 const TINT={eff:"#e2efec",gen:"#e4e9f4",fair:"#f2e5ee",perc:"#f3ebda"};
 
                 const PAPERS = [
+                  {thread:"eff",year:"2026",title:"LegoLM: Structured Weight Sharing for Large Language Models",authors:["Joseph Bingham"],venue:"arXiv:2608.08652",summary:"A structured weight-sharing scheme for compressing LLMs, built on a diagnosis of why naive global sharing breaks: layers carry heterogeneous weight scales, and a small fraction of outlier weights no shared centroid can represent, which compounds across layers into catastrophic quality loss. LegoLM fixes both by encoding scalar blocks, preserving outlier weights verbatim via percentile-selective replacement, and protecting the first and last transformer layers. It reaches 4.41\u00d7 compression on Mistral-7B with essentially no perplexity change, beating 8-bit post-training quantization on both size and quality, and shows that outlier dominance worsens as models scale up.",url:"https://arxiv.org/abs/2608.08652",kind:"arXiv"},
+                  {thread:"perc",year:"2026",title:"A Dynamic-Semantics Framework for Grounding Human Referring Expressions in Visual Perceptual Data",authors:["Joseph Bingham"],venue:"arXiv:2608.08663",summary:"Tackles lexical entrainment, the way people converge on shared names for hard-to-describe objects over repeated turns, which leading vision-language models fail to reproduce. It externalizes the pact between speakers into three inspectable sets of referent-object bindings updated by a dynamic-semantics rule, sitting on a perceptual pipeline that grounds noisy referring expressions in crowd-sourced imagery via SIFT homographies and the Universal Quality Index. On the Stanford Repeated Reference Game (15,000+ tangram utterances) it places the correct target in its top-5 from a single utterance 83.56% of the time, and the paper is unusually candid about its limits, including that it is non-interactive and open to a bounded retrieval-leakage effect.",url:"https://arxiv.org/abs/2608.08663",kind:"arXiv"},
                   {thread:"gen",year:"2026",title:"Hiding in Plain Sight: Visible Gene Correlations Undermine Single-Cell Representations",authors:["Alon Hacohen","Joseph Charles Bingham","Binyamin Perets","Dvir Aran"],venue:"LMRL Workshop @ ICLR 2026",summary:"Random gene masking lets single-cell foundation models cheat by interpolating a masked gene from its correlated neighbours. Masking whole functional cliques (pathways, complexes) via a covariance dependency graph removes that local support and forces reliance on global cell state, validated across Lung, Kidney, Heart and Pan-Cancer atlases.",url:"https://openreview.net/forum?id=DmEPWRT0oE",kind:"OpenReview"},
                   {thread:"gen",year:"2026",title:"The Right Inductive Bias for the Job: Dependency-Aware Masking for Scientific Foundation Models",authors:["Alon Hacohen","Joseph Charles Bingham","Binyamin Perets","Dvir Aran"],venue:"FM4Science Workshop @ ICLR 2026",summary:"Masked-language pretraining treats genes as independent tokens, which clashes with the co-regulated structure of gene networks and quietly harms underrepresented cell populations. The paper introduces CorrMask, which builds a gene dependency graph from expression covariance and masks correlated groups jointly, writing domain structure into the objective.",url:"https://openreview.net/forum?id=SNc5dejpxA",kind:"OpenReview"},
                   {thread:"gen",year:"2026",title:"Genes Are Not Words: Dependency-Aware Masking for Single-Cell Foundation Models",authors:["Alon Hacohen","Joseph Charles Bingham","Binyamin Perets","Dvir Aran"],venue:"Preprint",summary:"A direct challenge to the \u201cgenes as words\u201d analogy behind transformer models of transcriptomics: genes are co-regulated rather than independent, so borrowing masked-language modelling wholesale is a mismatch. The proposed dependency-aware masking scheme groups correlated genes so the model learns cellular state instead of local shortcuts.",url:"https://scholar.google.com/scholar?q=Genes+Are+Not+Words+Dependency-Aware+Masking+Single-Cell+Foundation+Models",kind:"Scholar"},
