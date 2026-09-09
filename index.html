@@ -58,7 +58,7 @@
         <li><a href="#about">about</a></li>
         <li><a href="#contact">contact</a></li>
         <li><a href="#teaching">teaching</a></li>
-        <li><a href="#publications">publications</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#CV">CV</a></li>
       </ul>                 
     </header>
@@ -132,7 +132,7 @@
               <style>
                 #pubs-app{
                   --ink:#14181f; --ink-soft:#4a5560; --panel:#fbfcfb; --line:#dde3e0; --line-soft:#e7ece9;
-                  --eff:#157a6e; --gen:#3a5ba0; --fair:#9b3d73; --perc:#b7791f;
+                  --eff:#157a6e; --gen:#3a5ba0; --fair:#9b3d73; --perc:#b7791f; --clin:#b0413e;
                   font-family:"Inter",system-ui,sans-serif; color:var(--ink); line-height:1.55;
                   background-image:radial-gradient(#e3e8e5 1px, transparent 1.4px);
                   background-size:24px 24px; background-position:-12px -12px;
@@ -155,12 +155,14 @@
                 #pubs-app .pub-chip[data-thread="gen"]{color:var(--gen);}
                 #pubs-app .pub-chip[data-thread="fair"]{color:var(--fair);}
                 #pubs-app .pub-chip[data-thread="perc"]{color:var(--perc);}
+                #pubs-app .pub-chip[data-thread="clin"]{color:var(--clin);}
                 #pubs-app .pub-chip[aria-pressed="true"]{color:#fff;border-color:transparent;}
                 #pubs-app .pub-chip[data-thread="all"][aria-pressed="true"]{background:var(--ink);}
                 #pubs-app .pub-chip[data-thread="eff"][aria-pressed="true"]{background:var(--eff);}
                 #pubs-app .pub-chip[data-thread="gen"][aria-pressed="true"]{background:var(--gen);}
                 #pubs-app .pub-chip[data-thread="fair"][aria-pressed="true"]{background:var(--fair);}
                 #pubs-app .pub-chip[data-thread="perc"][aria-pressed="true"]{background:var(--perc);}
+                #pubs-app .pub-chip[data-thread="clin"][aria-pressed="true"]{background:var(--clin);}
                 #pubs-app .pub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
                 #pubs-app .pub-card{
                   background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
@@ -202,7 +204,7 @@
                 #pubs-app .pub-empty{display:none;padding:40px 0;text-align:center;color:var(--ink-soft);font-family:"IBM Plex Mono",monospace;}
               </style>
 
-              <!--p class="pubs-lede">Fifteen papers across four research threads &mdash; efficient and biologically inspired model compression, machine learning for genomics and single cells, hidden bias in unsupervised representations, and aligning language with visual perception. Filter by thread, or browse the whole record.</p-->
+              <p class="pubs-lede">Seventeen papers across five research threads &mdash; efficient and biologically inspired model compression, machine learning for genomics and single cells, hidden bias in unsupervised representations, aligning language with visual perception, and cost-aware clinical decision support. Filter by thread, or browse the whole record.</p>
 
               <div class="pubs-controls" id="pub-filters" role="group" aria-label="Filter by research thread">
                 <button class="pub-chip" data-thread="all" aria-pressed="true">All <span class="n" id="pubn-all"></span></button>
@@ -210,6 +212,7 @@
                 <button class="pub-chip" data-thread="gen" aria-pressed="false"><span class="dot"></span>Genomics &amp; cells <span class="n" id="pubn-gen"></span></button>
                 <button class="pub-chip" data-thread="fair" aria-pressed="false"><span class="dot"></span>Representation fairness <span class="n" id="pubn-fair"></span></button>
                 <button class="pub-chip" data-thread="perc" aria-pressed="false"><span class="dot"></span>Perception &amp; language <span class="n" id="pubn-perc"></span></button>
+                <button class="pub-chip" data-thread="clin" aria-pressed="false"><span class="dot"></span>Clinical AI <span class="n" id="pubn-clin"></span></button>
               </div>
 
               <div class="pub-grid" id="pub-grid"></div>
@@ -219,12 +222,15 @@
               (function(){
                 const THREADS = {
                   eff:{name:"Efficiency & compression"}, gen:{name:"Genomics & cells"},
-                  fair:{name:"Representation fairness"},  perc:{name:"Perception & language"}
+                  fair:{name:"Representation fairness"},  perc:{name:"Perception & language"},
+                  clin:{name:"Clinical AI"}
                 };
-                const COL ={eff:"#157a6e",gen:"#3a5ba0",fair:"#9b3d73",perc:"#b7791f"};
-                const TINT={eff:"#e2efec",gen:"#e4e9f4",fair:"#f2e5ee",perc:"#f3ebda"};
+                const COL ={eff:"#157a6e",gen:"#3a5ba0",fair:"#9b3d73",perc:"#b7791f",clin:"#b0413e"};
+                const TINT={eff:"#e2efec",gen:"#e4e9f4",fair:"#f2e5ee",perc:"#f3ebda",clin:"#f4e5e3"};
 
                 const PAPERS = [
+                  {thread:"clin",year:"2026",title:"Cost-Aware Active Feature Acquisition for Differential Diagnosis under Realistic Clinical Availability Constraints",authors:["Joseph Charles Bingham","Netanel Arussy"],venue:"medRxiv 2026.08.30.26361745",summary:"Brings active feature acquisition to differential diagnosis under the constraints that real clinical data impose, where tests are ordered sequentially and the mere presence of a result in the record is itself informative rather than missing at random. The method weighs the diagnostic value of acquiring each further feature against its cost, aiming to reach accurate differentials while ordering fewer and cheaper tests.",url:"https://www.medrxiv.org/content/10.1101/2026.08.30.26361745",kind:"medRxiv"},
+                  {thread:"gen",year:"2026",title:"A Compartment-Adjustment Framework Reclassifies FOXC1 as a Stromal-Vascular Readout in Luminal A Breast Cancer",authors:["Daniel Eliyahu Yehoshua","Joseph Bingham"],venue:"bioRxiv 2026.08.11.744143",summary:"Reanalyses Luminal A breast cancer and argues that the basal-lineage signal picked up by the \u201cCentaur\u201d classifier reflects mixing of tumour cell populations rather than genuine basal identity. Through a compartment-adjustment framework it reclassifies FOXC1 as a readout of the stromal and vascular compartment, and recasts the basal signal as an axis of tumour-population composition, tightening how molecular subtype is read off bulk expression.",url:"https://www.biorxiv.org/content/10.1101/2026.08.11.744143",kind:"bioRxiv"},
                   {thread:"eff",year:"2026",title:"LegoLM: Structured Weight Sharing for Large Language Models",authors:["Joseph Bingham"],venue:"arXiv:2608.08652",summary:"A structured weight-sharing scheme for compressing LLMs, built on a diagnosis of why naive global sharing breaks: layers carry heterogeneous weight scales, and a small fraction of outlier weights no shared centroid can represent, which compounds across layers into catastrophic quality loss. LegoLM fixes both by encoding scalar blocks, preserving outlier weights verbatim via percentile-selective replacement, and protecting the first and last transformer layers. It reaches 4.41\u00d7 compression on Mistral-7B with essentially no perplexity change, beating 8-bit post-training quantization on both size and quality, and shows that outlier dominance worsens as models scale up.",url:"https://arxiv.org/abs/2608.08652",kind:"arXiv"},
                   {thread:"perc",year:"2026",title:"A Dynamic-Semantics Framework for Grounding Human Referring Expressions in Visual Perceptual Data",authors:["Joseph Bingham"],venue:"arXiv:2608.08663",summary:"Tackles lexical entrainment, the way people converge on shared names for hard-to-describe objects over repeated turns, which leading vision-language models fail to reproduce. It externalizes the pact between speakers into three inspectable sets of referent-object bindings updated by a dynamic-semantics rule, sitting on a perceptual pipeline that grounds noisy referring expressions in crowd-sourced imagery via SIFT homographies and the Universal Quality Index. On the Stanford Repeated Reference Game (15,000+ tangram utterances) it places the correct target in its top-5 from a single utterance 83.56% of the time, and the paper is unusually candid about its limits, including that it is non-interactive and open to a bounded retrieval-leakage effect.",url:"https://arxiv.org/abs/2608.08663",kind:"arXiv"},
                   {thread:"gen",year:"2026",title:"Hiding in Plain Sight: Visible Gene Correlations Undermine Single-Cell Representations",authors:["Alon Hacohen","Joseph Charles Bingham","Binyamin Perets","Dvir Aran"],venue:"LMRL Workshop @ ICLR 2026",summary:"Random gene masking lets single-cell foundation models cheat by interpolating a masked gene from its correlated neighbours. Masking whole functional cliques (pathways, complexes) via a covariance dependency graph removes that local support and forces reliance on global cell state, validated across Lung, Kidney, Heart and Pan-Cancer atlases.",url:"https://openreview.net/forum?id=DmEPWRT0oE",kind:"OpenReview"},
@@ -267,6 +273,14 @@
                     inner+='<path d="'+path+'" fill="none" stroke="#14181f" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round"/>';
                     const bx=m+(K-1)*cell+cell/2, by=m+4*ch+ch/2;
                     inner+='<circle cx="'+bx+'" cy="'+by+'" r="9" fill="none" stroke="#14181f" stroke-opacity="0.5"/><circle cx="'+bx+'" cy="'+by+'" r="4" fill="#14181f"/>';
+                  } else if(thread==="clin"){
+                    const root=[58,100], L1=[[172,62],[172,138]], L2=[[300,40],[300,84],[300,128],[300,172]];
+                    const edge=(a,b,hl)=>'<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="'+c+'" stroke-width="'+(hl?2.2:1)+'" stroke-opacity="'+(hl?0.85:0.28)+'"/>';
+                    inner+=edge(root,L1[0],true)+edge(root,L1[1],false);
+                    inner+=edge(L1[0],L2[0],true)+edge(L1[0],L2[1],false)+edge(L1[1],L2[2],false)+edge(L1[1],L2[3],false);
+                    inner+='<circle cx="'+root[0]+'" cy="'+root[1]+'" r="7" fill="'+c+'"/>';
+                    L1.forEach((p,idx)=>{ const hl=idx===0; inner+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="6" fill="'+(hl?c:"none")+'" stroke="'+c+'" stroke-width="1.5" stroke-opacity="'+(hl?1:0.5)+'"/>'; });
+                    L2.forEach((p,idx)=>{ const hl=idx===0, s=hl?7:5; inner+='<rect x="'+(p[0]-s)+'" y="'+(p[1]-s)+'" width="'+(2*s)+'" height="'+(2*s)+'" transform="rotate(45 '+p[0]+' '+p[1]+')" fill="'+(hl?c:"none")+'" stroke="'+c+'" stroke-width="1.5" stroke-opacity="'+(hl?1:0.45)+'"/>'; });
                   } else {
                     const tokY=[52,86,120,154], tx=40, tw=104, verts=[[300,40],[360,86],[330,150],[262,150],[236,96]];
                     inner+='<polygon points="'+verts.map(v=>v.join(",")).join(" ")+'" fill="'+c+'" fill-opacity="0.16" stroke="'+c+'" stroke-width="1.6"/>';
@@ -301,7 +315,7 @@
                   grid.appendChild(el);
                 });
 
-                const counts={all:PAPERS.length,eff:0,gen:0,fair:0,perc:0};
+                const counts={all:PAPERS.length,eff:0,gen:0,fair:0,perc:0,clin:0};
                 PAPERS.forEach(p=>counts[p.thread]++);
                 Object.keys(counts).forEach(k=>{ const e=document.getElementById("pubn-"+k); if(e) e.textContent=counts[k]; });
 
